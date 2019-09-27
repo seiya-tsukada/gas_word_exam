@@ -31,8 +31,8 @@ function sheet_get(sheet){
   
   var ret_s = "";
   
-  for(var i =0; i < value_s.length; i++) {
-    for(var j =0; j < a_value_s.length; j++) {
+  for(var i=0; i < value_s.length; i++) {
+    for(var j=0; j < a_value_s.length; j++) {
       if(i == j){
         ret_s = ret_s + value_s[i][0] + ": " + a_value_s[j][0] + "\r\n";
       }
