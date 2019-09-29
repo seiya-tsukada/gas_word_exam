@@ -9,7 +9,7 @@ function doPost(e) {
   }else{
     ret_s = "not supported";
   }
-  
+
   // var sheet = SpreadsheetApp.getActive().getSheetByName("word_list");
   ret_s = sheet_get(sheet)
   Logger.log(ret_s);
@@ -20,23 +20,27 @@ function doPost(e) {
 function sheet_get(sheet){
   var sheet_lastRow = sheet.getLastRow();
   
-  var row = "A2:A" + sheet_lastRow;
-  var a_row = "C2:C" + sheet_lastRow;
+  var a_row = "A2:A" + sheet_lastRow;
+  var b_row = "B2:B" + sheet_lastRow;
+  var c_row = "C2:C" + sheet_lastRow;
   
-  var range = sheet.getRange(row);
-  var value_s = range.getValues();
-  
+  // Word
   var a_range = sheet.getRange(a_row);
   var a_value_s = a_range.getValues();
   
+  // Part of speech
+  var b_range = sheet.getRange(b_row);
+  var b_value_s = b_range.getValues();
+  
+  // Transration Word
+  var c_range = sheet.getRange(c_row);
+  var c_value_s = c_range.getValues();
+  
   var ret_s = "";
-  for(var i=(value_s.length-1); 0 <= i; i--) {
-    for(var j=(a_value_s.length-1); 0 <= j; j--) {
-      if(i == j){
-         ret_s = ret_s + value_s[i] + ": " + a_value_s[j] + "\r\n";
-      }
-    }
+  for(var i=(a_value_s.length-1); 0 <= i; i--) {
+    ret_s = ret_s + a_value_s[i] + " : " + b_value_s[i] + " => " + c_value_s[i] + "\r\n";
   }
+
   return ret_s;
   
 }
